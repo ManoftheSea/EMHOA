@@ -20,12 +20,8 @@
       tex = pkgs.texlive.combine {
         inherit
           (pkgs.texlive)
-          #hyperref
-          #infwarerr
-          #kvoptions
           latex-bin
           latexmk
-          #pdftexcmds
           scheme-basic
           titlesec
           ;
@@ -34,6 +30,17 @@
       devShells.default = pkgs.mkShellNoCC {
         name = "LaTeX environment";
         packages = [
+          (pkgs.aspellWithDicts (
+            dicts:
+              builtins.attrValues {
+                inherit
+                  (dicts)
+                  en
+                  en-computers
+                  en-science
+                  ;
+              }
+          ))
           tex
         ];
         shellHook = ''
