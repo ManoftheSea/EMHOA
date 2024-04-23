@@ -20,6 +20,7 @@
       tex = pkgs.texlive.combine {
         inherit
           (pkgs.texlive)
+          enumitem
           latex-bin
           latexmk
           scheme-basic
@@ -66,7 +67,7 @@
               latexmk -interaction=nonstopmode -pdf -lualatex \
               -pretex="\pdfvariable suppressoptionalinfo 512\relax" \
               -usepretex \
-              Bylaws.tex Covenants.tex
+              ARC.tex Bylaws.tex Covenants.tex
           '';
           installPhase = ''
             mkdir -p $out
